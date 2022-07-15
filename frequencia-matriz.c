@@ -2,7 +2,7 @@
 
 int main(){
 
-  int menor, linhas, colunas, tamanho, matriz[30][30], matrizSaida[30][30], contador[30][30], valores[101], lista[101], frequencia[101], listaFrequencia[101], quantidade = 0, contMenor, contMaior;
+  int menor, linhas, colunas, matriz[30][30], matrizSaida[30][30], contador[30][30], valores[101], lista[102], frequencia[101], listaFrequencia[101], quantidade = 0;
 
   scanf("%d%d", &linhas, &colunas);
 
@@ -46,23 +46,17 @@ int main(){
     }
   }
 
-  contMenor = 0;
-  contMaior = quantidade - 1;
-  menor = 101;
+  lista[-1] = -1;
 
   for(int i = 0; i < quantidade; i++){
+    menor = 101;
     for(int j = 0; j < quantidade; j++){
-      if(valores[j] < menor){
-        tamanho = 0;
+      if(valores[j] < menor && valores[j] > lista[i-1]){
         menor = valores[j];
-        //lista[contMenor] = valores[i];
-        //listaFrequencia[contMenor] = frequencia[i];
-        //contMenor++;
+        listaFrequencia[i] = frequencia[j];
       }
     }
-    if(tamanho == 0){
-      printf("%d eh o menor", valores[i]);
-    }
+    lista[i] = menor;
   }
 
   for(int i = 0; i < quantidade; i++){
